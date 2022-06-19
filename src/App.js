@@ -47,9 +47,9 @@ function App() {
             alert("Payment is successfull");
           },
           prefill: {
-            name: "Kanhaiya",
-            email: "emial@email.com",
-            contact: "8976879231",
+            // name: "Kanhaiya",
+            // email: "emial@email.com",
+            // contact: "8976879231",
           },
         };
         const paymentObject = new window.Razorpay(options);
