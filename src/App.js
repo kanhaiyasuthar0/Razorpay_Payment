@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import axios from "axios";
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
 
   function loadRazorpay() {
     const script = document.createElement("script");
