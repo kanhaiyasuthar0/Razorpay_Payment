@@ -17,9 +17,12 @@ function App() {
       try {
         // console.log(val);
         // console.log(amount);
-        const result = await axios.post("http://localhost:5000/create-order", {
-          amount: val + "00",
-        });
+        const result = await axios.post(
+          "https://razorpaypayment.herokuapp.com/create-order",
+          {
+            amount: val + "00",
+          }
+        );
 
         const { amount, id: order_id, currency } = result.data;
 
@@ -32,12 +35,15 @@ function App() {
           order_id: order_id,
           handler: async function (response) {
             console.log("response", response);
-            const result = await axios.post("http://localhost:5000/pay-order", {
-              amount: amount,
-              razorpayPaymendId: response.razorpay_payment_id,
-              razorpayOrderId: response.razorpay_order_id,
-              razorpaySignature: response.razorpay_signature,
-            });
+            const result = await axios.post(
+              "https://razorpaypayment.herokuapp.com/pay-order",
+              {
+                amount: amount,
+                razorpayPaymendId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature,
+              }
+            );
             alert("Payment is successfull");
           },
           prefill: {
